@@ -40,16 +40,13 @@ public class Task2SalesReport {
     }
 
     private static void showSales(ArrayList<Item> items, String name) {
-        int totalQty = 0;
-        double totalAmount = 0;
+        System.out.println("\nSales of " + name);
+        System.out.printf("%-12s %-9s %s%n", "Name", "Price", "Quantity sold");
         for (Item item : items) {
             if (item.getName().equals(name)) {
-                totalQty += item.getQuantity();
-                totalAmount += item.getTotal();
+                System.out.printf("%-12s $%-8.2f %d%n",
+                        item.getName(), item.getPrice(), item.getQuantity());
             }
         }
-        System.out.println("\nSales of " + name);
-        System.out.println("Quantity sold: " + totalQty);
-        System.out.printf("Total sales: $%.2f%n", totalAmount);
     }
 }
