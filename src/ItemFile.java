@@ -7,7 +7,8 @@ public class ItemFile {
     public static void save(ArrayList<Item> items) throws IOException {
         try (PrintWriter out = new PrintWriter(new FileWriter(FILE_NAME))) {
             for (Item item : items) {
-                out.println(item.getName() + " , " + item.getPrice() + " , " + item.getQuantity());
+                out.println(item.getName() + " , " + item.getPrice() + " , " + item.getQuantity()
+                        + " , " + item.getTotal());
             }
         }
     }
@@ -22,7 +23,8 @@ public class ItemFile {
                 String name = parts[0].trim();
                 double price = Double.parseDouble(parts[1].trim());
                 int quantity = Integer.parseInt(parts[2].trim());
-                items.add(new Item(name, price, quantity));
+                double total = Double.parseDouble(parts[3].trim());
+                items.add(new Item(name, price, quantity, total));
             }
         }
         return items;
